@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Akash Frame Guna — Personalized Photo Frames & Customized Gifts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --canvas: #FAFAF7;
+    --pearl: #F5F3EE;
+    --ivory: #EBE8E1;
+    --stone: #8A8580;
+    --charcoal: #2A2A2A;
+    --gold: #B8A88A;
+    --bronze: #8B7355;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--canvas);
+    color: var(--charcoal);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.15;
+    color: var(--charcoal);
+  }
+
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  /* ============ ANNOUNCEMENT ============ */
+  .announcement {
+    background: var(--charcoal);
+    color: var(--canvas);
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    padding: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  /* ============ HEADER ============ */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: rgba(250, 250, 247, 0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(42, 42, 42, 0.08);
+  }
+
+  .nav-wrap {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 22px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  .brand-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--charcoal);
+    letter-spacing: 0.08em;
+  }
+
+  .brand-sub {
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    color: var(--stone);
+    text-transform: uppercase;
+  }
+
+  nav.main-nav {
+    display: flex;
+    gap: 36px;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  nav.main-nav a {
+    transition: color 0.25s;
+    color: var(--charcoal);
+  }
+
+  nav.main-nav a:hover { color: var(--bronze); }
+
+  .header-actions {
+    display: flex;
+    gap: 22px;
+    align-items: center;
+  }
+
+  .header-actions a, .header-actions button {
+    background: none;
+    border: none;
+    color: var(--charcoal);
+    cursor: pointer;
+    transition: color 0.25s;
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+  }
+
+  .header-actions a:hover, .header-actions button:hover { color: var(--bronze); }
+
+  .cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background: var(--charcoal);
+    color: var(--canvas);
+    font-size: 9px;
+    font-weight: 600;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .menu-btn { display: none; }
+
+  /* ============ MOBILE MENU ============ */
+  .mobile-menu {
+    position: fixed;
+    inset: 0;
+    background: var(--canvas);
+    z-index: 100;
+    padding: 24px;
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .mobile-menu.open { display: flex; }
+
+  .mobile-menu-close {
+    align-self: flex-end;
+    background: none;
+    border: none;
+    color: var(--charcoal);
+    font-size: 32px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+
+  .mobile-menu a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--ivory);
+    color: var(--charcoal);
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    padding: 160px 32px 180px;
+    text-align: center;
+    background: var(--canvas);
+    position: relative;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-inner {
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.45em;
+    color: var(--stone);
+    margin-bottom: 32px;
+    text-transform: uppercase;
+  }
+
+  .hero h1 {
+    font-size: clamp(38px, 6.5vw, 76px);
+    margin-bottom: 28px;
+    font-weight: 500;
+    color: var(--charcoal);
+  }
+
+  .hero h1 span {
+    color: var(--bronze);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .hero p {
+    color: var(--stone);
+    font-size: 17px;
+    max-width: 520px;
+    margin: 0 auto 48px;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* ============ BUTTONS ============ */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 36px;
+    border-radius: 0;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .btn-primary {
+    background: var(--charcoal);
+    color: var(--canvas);
+  }
+
+  .btn-primary:hover {
+    background: var(--bronze);
+    color: var(--white);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--charcoal);
+    border: 1px solid var(--charcoal);
+  }
+
+  .btn-outline:hover {
+    background: var(--charcoal);
+    color: var(--canvas);
+  }
+
+  /* ============ TRUST BAR ============ */
+  .trust-bar {
+    background: var(--pearl);
+    border-top: 1px solid var(--ivory);
+    border-bottom: 1px solid var(--ivory);
+    padding: 40px 32px;
+  }
+
+  .trust-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+
+  .trust-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    text-align: center;
+  }
+
+  .trust-icon {
+    font-size: 20px;
+    color: var(--bronze);
+    opacity: 0.8;
+  }
+
+  .trust-item span {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--stone);
+    font-weight: 500;
+  }
+
+  /* ============ SECTIONS ============ */
+  section { padding: 100px 32px; }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .section-head {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .section-head h2 {
+    font-size: clamp(32px, 4.5vw, 52px);
+    margin-bottom: 16px;
+    font-weight: 500;
+    color: var(--charcoal);
+  }
+
+  .section-head h2 span {
+    color: var(--bronze);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .section-head p {
+    color: var(--stone);
+    font-size: 15px;
+    font-weight: 300;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  /* ============ CATEGORY GRID ============ */
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .category-card {
+    background: var(--white);
+    border: 1px solid var(--ivory);
+    padding: 28px 24px;
+    transition: all 0.35s ease;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .category-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(42, 42, 42, 0.06);
+  }
+
+  .category-thumb {
+    aspect-ratio: 1;
+    background: var(--pearl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  .category-card h3 {
+    font-size: 17px;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+    font-weight: 600;
+    transition: color 0.3s;
+  }
+
+  .category-card:hover h3 { color: var(--bronze); }
+
+  .category-card p {
+    font-size: 12px;
+    color: var(--stone);
+    line-height: 1.5;
+  }
+
+  /* ============ PRODUCT GRID ============ */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .product-card {
+    background: var(--white);
+    border: 1px solid var(--ivory);
+    padding: 16px;
+    transition: all 0.35s ease;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+
+  .product-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-6px);
+    box-shadow: 0 24px 48px rgba(42, 42, 42, 0.08);
+  }
+
+  .product-image {
+    position: relative;
+    aspect-ratio: 1;
+    background: var(--pearl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    color: var(--gold);
+    font-weight: 400;
+    overflow: hidden;
+  }
+
+  .badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--charcoal);
+    color: var(--canvas);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    padding: 6px 12px;
+    text-transform: uppercase;
+  }
+
+  .product-card h3 {
+    font-size: 16px;
+    color: var(--charcoal);
+    margin-bottom: 10px;
+    transition: color 0.3s;
+    font-weight: 600;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .product-card:hover h3 { color: var(--bronze); }
+
+  .price {
+    color: var(--charcoal);
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: auto;
+    margin-bottom: 16px;
+    letter-spacing: 0.02em;
+  }
+
+  .price small {
+    color: var(--stone);
+    font-size: 12px;
+    text-decoration: line-through;
+    margin-left: 8px;
+    font-weight: 400;
+  }
+
+  .product-actions {
+    display: flex;
+    gap: 10px;
+  }
+
+  .btn-sm {
+    flex: 1;
+    padding: 12px 16px;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+  }
+
+  .wishlist-btn {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--ivory);
+    background: transparent;
+    color: var(--stone);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    font-size: 16px;
+  }
+
+  .wishlist-btn:hover {
+    border-color: var(--charcoal);
+    color: var(--charcoal);
+  }
+
+  /* ============ LED SECTION ============ */
+  .led-section {
+    background: var(--pearl);
+    border-top: 1px solid var(--ivory);
+    border-bottom: 1px solid var(--ivory);
+  }
+
+  .led-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .led-grid h2 {
+    font-size: clamp(32px, 4.5vw, 52px);
+    margin: 20px 0 28px;
+    font-weight: 500;
+  }
+
+  .led-grid h2 span {
+    color: var(--bronze);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .led-grid p {
+    color: var(--stone);
+    margin-bottom: 40px;
+    max-width: 440px;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .led-visual {
+    aspect-ratio: 1;
+    background: var(--white);
+    border: 1px solid var(--ivory);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  /* ============ HOW IT WORKS ============ */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 64px;
+  }
+
+  .step-card {
+    background: var(--white);
+    border: 1px solid var(--ivory);
+    padding: 40px 32px;
+    text-align: center;
+    transition: all 0.3s;
+  }
+
+  .step-card:hover {
+    border-color: var(--gold);
+  }
+
+  .step-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    color: var(--gold);
+    margin-bottom: 20px;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  .step-card h3 {
+    font-size: 18px;
+    color: var(--charcoal);
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+
+  .step-card p {
+    font-size: 13px;
+    color: var(--stone);
+    line-height: 1.7;
+  }
+
+  /* ============ FINAL CTA ============ */
+  .final-cta {
+    text-align: center;
+    padding: 120px 32px;
+    background: var(--charcoal);
+    color: var(--canvas);
+  }
+
+  .final-cta h2 {
+    font-size: clamp(32px, 4.5vw, 52px);
+    margin-bottom: 40px;
+    color: var(--canvas);
+    font-weight: 500;
+  }
+
+  .final-cta h2 span {
+    color: var(--gold);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .final-cta .btn-primary {
+    background: var(--gold);
+    color: var(--charcoal);
+  }
+
+  .final-cta .btn-primary:hover {
+    background: var(--canvas);
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    background: var(--pearl);
+    border-top: 1px solid var(--ivory);
+    padding: 80px 32px 0;
+  }
+
+  .footer-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 56px;
+    padding-bottom: 60px;
+  }
+
+  .footer-brand h3 {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--charcoal);
+    font-size: 22px;
+    letter-spacing: 0.08em;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+
+  .footer-brand p {
+    color: var(--stone);
+    font-size: 13px;
+    margin-bottom: 20px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .footer-brand a {
+    color: var(--bronze);
+    font-size: 13px;
+    transition: color 0.2s;
+    font-weight: 500;
+  }
+
+  .footer-brand a:hover { color: var(--charcoal); }
+
+  .footer-col h4 {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--charcoal);
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .footer-col a, .footer-col li {
+    font-size: 13px;
+    color: var(--stone);
+    transition: color 0.2s;
+    font-weight: 300;
+  }
+
+  .footer-col a:hover { color: var(--charcoal); }
+
+  .footer-divider {
+    height: 1px;
+    background: var(--ivory);
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    padding: 28px 0;
+    font-size: 12px;
+    color: var(--stone);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+  }
+
+  /* ============ WHATSAPP FLOAT ============ */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--charcoal);
+    color: var(--canvas);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 12px 32px rgba(42, 42, 42, 0.2);
+    z-index: 30;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .whatsapp-float:hover {
+    background: var(--bronze);
+    transform: scale(1.08);
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 1024px) {
+    nav.main-nav { display: none; }
+    .menu-btn { display: flex !important; }
+    .category-grid,
+    .product-grid { grid-template-columns: repeat(3, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 48px; }
+  }
+
+  @media (max-width: 768px) {
+    .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .category-grid,
+    .product-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .steps-grid { grid-template-columns: 1fr; }
+    .led-grid { grid-template-columns: 1fr; gap: 48px; }
+    .hero { padding: 120px 24px 140px; }
+    section { padding: 72px 24px; }
+    .category-card, .product-card { padding: 14px; }
+    .category-thumb, .product-image { font-size: 36px; }
+  }
+
+  @media (max-width: 520px) {
+    .brand-sub { display: none; }
+    .hero-buttons { flex-direction: column; }
+    .hero-buttons .btn { width: 100%; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .section-head { margin-bottom: 48px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT -->
+<div class="announcement">Personalized Gifts Made With Love</div>
+
+<!-- HEADER -->
+<header>
+  <div class="nav-wrap">
+    <a href="#" class="brand">
+      <span class="brand-mark">AKASH</span>
+      <span class="brand-sub">FRAME GUNA</span>
+    </a>
+
+    <nav class="main-nav">
+      <a href="#">Home</a>
+      <a href="#shop">Shop</a>
+      <a href="#lamination">Lamination</a>
+      <a href="#led">LED Frames</a>
+      <a href="#gifts">Gifts</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="#" aria-label="Search">🔍</a>
+      <a href="#" aria-label="Wishlist">♡</a>
+      <a href="#" aria-label="Cart" style="position: relative;">
+        🛍
+        <span class="cart-badge">2</span>
+      </a>
+      <button class="menu-btn" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" onclick="document.getElementById('mobileMenu').classList.remove('open')">×</button>
+  <a href="#">Home</a>
+  <a href="#shop">Shop All</a>
+  <a href="#lamination">Lamination Frames</a>
+  <a href="#led">LED Frames</a>
+  <a href="#gifts">Customized Gifts</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Akash Frame Guna</div>
+    <h1>Your Memories.<br><span>Beautifully Framed.</span></h1>
+    <p>Turn your favorite moments into personalized frames and thoughtful gifts made to be treasured.</p>
+    <div class="hero-buttons">
+      <a href="#shop" class="btn btn-primary">Shop Photo Frames</a>
+      <a href="#gifts" class="btn btn-outline">Explore Personalized Gifts</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-grid">
+    <div class="trust-item">
+      <div class="trust-icon">✦</div>
+      <span>Personalized Products</span>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🎁</div>
+      <span>Thoughtful Gifting</span>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🖼</div>
+      <span>Photo Printing</span>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">📍</div>
+      <span>Local Store in Guna</span>
+    </div>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section id="shop">
+  <div class="container">
+    <div class="section-head">
+      <h2>Shop by <span>Category</span></h2>
+      <p>Find the perfect personalized gift for every occasion.</p>
+    </div>
+
+    <div class="category-grid">
+      <div class="category-card">
+        <div class="category-thumb">L</div>
+        <h3>Lamination Frames</h3>
+        <p>Premium laminated photo frames in multiple sizes.</p>
+      </div>
+      <div class="category-card">
+        <div class="category-thumb">LED</div>
+        <h3>LED Frames</h3>
+        <p>Glowing frames that light up your memories.</p>
+      </div>
+      <div class="category-card">
+        <div class="category-thumb">☕</div>
+        <h3>Photo Mugs</h3>
+        <p>Custom printed mugs with your favorite moments.</p>
+      </div>
+      <div class="category-card">
+        <div class="category-thumb">🔑</div>
+        <h3>Photo Keychains</h3>
+        <p>Carry your memories everywhere you go.</p>
+      </div>
+      <div class="category-card">
+        <div class="category-thumb">👕</div>
+        <h3>T-Shirt Printing</h3>
+        <p>Wear your memories in style.</p>
+      </div>
+      <div class="category-card">
+        <div class="category-thumb">🖨</div>
+        <h3>Photo Printing</h3>
+        <p>High-quality photo prints in every size.</p>
+      </div>
+      <div class="category-card">
+        <div class="category-thumb">🎀</div>
+        <h3>Customized Gifts</h3>
+        <p>Thoughtful personalized gifts for every occasion.</p>
+      </div>
+      <div class="category-card">
+        <div class="category-thumb">✨</div>
+        <h3>Other Products</h3>
+        <p>Discover more personalized gift options.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BESTSELLERS -->
+<section id="lamination" style="padding-top: 0;">
+  <div class="container">
+    <div class="section-head">
+      <h2>Bestselling <span>Products</span></h2>
+      <p>Handpicked favourites from our collection.</p>
+    </div>
+
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="product-image">
+          <span class="badge">Bestseller</span>
+          F
+        </div>
+        <h3>Classic Lamination Frame</h3>
+        <div class="price">₹499 <small>₹699</small></div>
+        <div class="product-actions">
+          <button class="btn btn-primary btn-sm">Add to Cart</button>
+          <button class="wishlist-btn" aria-label="Wishlist">♡</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <span class="badge">New</span>
+          LED
+        </div>
+        <h3>Glow LED Photo Frame</h3>
+        <div class="price">₹899</div>
+        <div class="product-actions">
+          <button class="btn btn-primary btn-sm">Add to Cart</button>
+          <button class="wishlist-btn" aria-label="Wishlist">♡</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">M</div>
+        <h3>Custom Photo Mug</h3>
+        <div class="price">₹299</div>
+        <div class="product-actions">
+          <button class="btn btn-primary btn-sm">Add to Cart</button>
+          <button class="wishlist-btn" aria-label="Wishlist">♡</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">K</div>
+        <h3>Photo Keychain</h3>
+        <div class="price">₹149</div>
+        <div class="product-actions">
+          <button class="btn btn-primary btn-sm">Add to Cart</button>
+          <button class="wishlist-btn" aria-label="Wishlist">♡</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">T</div>
+        <h3>Custom T-Shirt Print</h3>
+        <div class="price">₹599</div>
+        <div class="product-actions">
+          <button class="btn btn-primary btn-sm">Add to Cart</button>
+          <button class="wishlist-btn" aria-label="Wishlist">♡</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">P</div>
+        <h3>Photo Print (A4)</h3>
+        <div class="price">₹99</div>
+        <div class="product-actions">
+          <button class="btn btn-primary btn-sm">Add to Cart</button>
+          <button class="wishlist-btn" aria-label="Wishlist">♡</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">F</div>
+        <h3>Family Photo Frame</h3>
+        <div class="price">₹749</div>
+        <div class="product-actions">
+          <button class="btn btn-primary btn-sm">Add to Cart</button>
+          <button class="wishlist-btn" aria-label="Wishlist">♡</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">G</div>
+        <h3>Personalized Gift Box</h3>
+        <div class="price">₹1199</div>
+        <div class="product-actions">
+          <button class="btn btn-primary btn-sm">Add to Cart</button>
+          <button class="wishlist-btn" aria-label="Wishlist">♡</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LED SECTION -->
+<section class="led-section" id="led">
+  <div class="container">
+    <div class="led-grid">
+      <div>
+        <div class="eyebrow">Featured Collection</div>
+        <h2>Light Up Your <span>Favorite Memories.</span></h2>
+        <p>Our LED photo frames add a warm, glowing touch to every memory. Crafted with premium materials and elegant finishes.</p>
+        <a href="#" class="btn btn-primary">Explore LED Frames</a>
+      </div>
+      <div class="led-visual">LED</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="gifts">
+  <div class="container">
+    <div class="section-head">
+      <h2>How <span>Customization</span> Works</h2>
+      <p>Three simple steps to your perfect personalized gift.</p>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">01</div>
+        <h3>Choose Product & Size</h3>
+        <p>Browse our collection and pick your preferred size from our wide range of options.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">02</div>
+        <h3>Upload Your Photo</h3>
+        <p>Share your favorite memory and add any custom text or special instructions.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">03</div>
+        <h3>Confirm & Order</h3>
+        <p>Review the design with our team and place your order. We'll craft it with love.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <h2>Make Every Memory <span>Worth Keeping.</span></h2>
+  <a href="#shop" class="btn btn-primary">Find Your Perfect Frame</a>
+</section>
+
+<!-- FOOTER -->
+<footer id="about">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>AKASH FRAME GUNA</h3>
+      <p>Personalized photo frames, LED frames, and customized gifts crafted with love in Guna, Madhya Pradesh.</p>
+      <a href="https://instagram.com/akashframeguna" target="_blank">@akashframeguna</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#">Lamination Frames</a></li>
+        <li><a href="#">LED Frames</a></li>
+        <li><a href="#">Photo Mugs</a></li>
+        <li><a href="#">Photo Keychains</a></li>
+        <li><a href="#">T-Shirt Printing</a></li>
+        <li><a href="#">Customized Gifts</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">Returns & Cancellation</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms & Conditions</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col" id="contact">
+      <h4>Contact</h4>
+      <ul>
+        <li>Guna, Madhya Pradesh</li>
+        <li>Phone: +91 XXXXX XXXXX</li>
+        <li>Mon–Sat, 10 AM – 8 PM</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-divider"></div>
+
+  <div class="footer-bottom">
+    © 2025 Akash Frame Guna. All rights reserved. Crafted with ❤️ in Guna.
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/91XXXXXXXXXX?text=Hi%20Akash%20Frame%20Guna!%20I'd%20like%20to%20know%20more%20about%20your%20products." target="_blank" class="whatsapp-float" aria-label="Order on WhatsApp">
+  💬
+</a>
+
+</body>
+</html>
